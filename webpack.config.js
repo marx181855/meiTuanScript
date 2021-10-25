@@ -32,7 +32,7 @@ module.exports = async () => {
     return  {
         mode: 'none',
 
-        entry: './src/index.ts',
+        entry: './src/main.ts',
         output: output,
         devServer: {
             // 以dist为基础启动一个服务器，服务器运行在4200端口上，每次启动时自动打开浏览器

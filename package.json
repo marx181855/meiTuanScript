@@ -29,5 +29,7 @@
     "open": "7.3.0",
     "upath": "2.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.23.0"
+  }
 }
