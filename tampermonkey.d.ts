@@ -232,7 +232,7 @@ declare namespace GM_Types {
         binary?: boolean,
         timeout?: number,
         context?: CONTEXT_TYPE,
-        responseType?: "arraybuffer" | "blob" | "json",
+        responseType?: "arraybuffer" | "blob" | "json" | string,
         overrideMimeType?: string,
         anonymous?: boolean,
         fetch?: boolean,

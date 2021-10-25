@@ -1,29 +1,16 @@
+import { serialize } from './functions';
+
 interface Options {
   url: string;
-  method: 'GET' | 'POST',
+  method: 'GET' | 'POST' | 'HEAD',
   async?: boolean;
   timeout?: number;
-  headers?: object;
+  headers?: { [index: string]: string };
   responseType?: "arraybuffer" | "blob" | "document" | "json" |  "text";
-  data?:object
+  data?:{ [index: string]: any };
 }
 
-
-// 序列化参数
-function serialize(data: any) {
-	if (!data) return '';
-	var pairs = [];
-	for (var name in data) {
-		if (!data.hasOwnProperty(name)) continue;
-		if (typeof data[name] === 'function') continue;
-		var value = data[name].toString();
-		name = encodeURIComponent(name);
-		value = encodeURIComponent(value);
-		pairs.push(name + '=' + value);
-	}
-	return pairs.join('&');
-}
-
+/** 封装的ajax请求函数 */
 function ajax(optionsOverride: Options) {
   // 将传入的参数与默认设置合并
   const options = {

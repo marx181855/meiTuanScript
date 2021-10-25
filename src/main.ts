@@ -1,9 +1,7 @@
-import options from "./options";
+import options from "./matchOptions";
 
-for(const [k, v] of options) {
-  k.test(location.href) && v();
-}
-
-
+for(const k in options) {
+  new RegExp(k).test(location.href) && options[k]();
+};
 
 

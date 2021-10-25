@@ -1,4 +1,5 @@
-import ajax from './ajax';
+import ajax from '../utils/ajax';
+import gmAjax from '../utils/GmAjax';
 
 interface WmOrderItem {
   wm_poi_id: number;
@@ -16,10 +17,11 @@ interface Result {
 export default async function() {
   const timer = setInterval(async () => {
     try {
-      const res: any = await ajax({
+      const res: any = await gmAjax({
         url: 'https://e.waimai.meituan.com/v2/order/common/unprocessed/r/list?region_id=1000440100&region_version=1600916666&tag=prepMeal&pageSize=10&pageNum=1',
         method: "GET"
       });
+      console.debug(res);
       const data: Result = res.data;
       for(const item of data.wmOrderList) {
         return;
