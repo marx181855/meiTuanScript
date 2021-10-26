@@ -19,8 +19,12 @@ function ajax(optionsOverride: Options) {
     responseType: "json",
   } as Options;
   
+
   for(const k in optionsOverride) {
     options[k] = optionsOverride[k];
+  }
+  if (optionsOverride.method === 'GET' && optionsOverride.data) {
+    options.url += `?${serialize(optionsOverride.data)}`;
   }
   const xhr = new XMLHttpRequest();
 

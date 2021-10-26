@@ -32,11 +32,15 @@ async function gmAjax(optionsOverride: Options) {
     }
   };
   for(const k in optionsOverride) {
+    // 有data要给他序列化，如果是get请求，还要加上urlho
     if (k === 'data') {
       options[k] = serialize(optionsOverride[k]);
     } else {
       options[k] = optionsOverride[k];
     }
+  }
+  if (optionsOverride.method === 'GET' && optionsOverride.data) {
+    (options as any).url += `?${serialize(optionsOverride.data)}`;
   }
     GM_xmlhttpRequest(options);
   });
